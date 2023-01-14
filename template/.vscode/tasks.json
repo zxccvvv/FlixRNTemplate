@@ -1,0 +1,60 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Metro",
+      "detail": "🚇 Starts the Metro bundler (React Native packager)",
+      "type": "shell",
+      "presentation": {
+        "group": "BuildRN",
+        "reveal": "always"
+      },
+      "command": "npx react-native start"
+    },
+    {
+      "label": "Start Emulator Android",
+      "detail": "📱 Start Emulator",
+      "type": "shell",
+      "presentation": {
+        "group": "BuildRN",
+        "reveal": "silent"
+      },
+      "command": "emulator @Pixel_5_API_30 -dns-server 8.8.8.8"
+    },
+    {
+      "label": "React Native Run Android",
+      "detail": "▶ React Native Run Android",
+      "type": "shell",
+      "presentation": {
+        "group": "BuildRN",
+        "reveal": "silent"
+      },
+      "command": "npx react-native run-android"
+    },
+    {
+      "label": "React Native Run Android On Emulator",
+      "detail": "📱 React Native Run Android On Emulator",
+      "dependsOn": [
+        "Start Metro",
+        "Start Emulator Android",
+        "React Native Run Android"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Terminate All Tasks",
+      "detail": "Kill all running task vscode in terminal",
+      "command": "echo ${input:terminate}",
+      "type": "shell",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "terminateAll"
+    }
+  ]
+}
